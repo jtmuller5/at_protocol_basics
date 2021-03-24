@@ -1,0 +1,15 @@
+include: package:pedantic/analysis_options.1.9.2.yaml
+# Including specific version so pre-commits don't fail when new pedantic version comes out
+# https://stackoverflow.com/questions/54117257/required-annotation-as-error-instead-of-warning
+
+analyzer:
+  errors:
+    file_names: error
+    omit_local_variable_types: error
+    missing_required_param: error
+    invalid_uri: error
+    #unused_import: error
+
+linter:
+  rules:
+  #- always_require_non_null_named_parameters
