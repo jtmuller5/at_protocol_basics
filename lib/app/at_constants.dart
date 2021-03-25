@@ -10,4 +10,9 @@ class AtConstants {
 
   static const String TERMS_CONDITIONS = 'https://atsign.com/terms-conditions/';
   static const String PRIVACY_POLICY = 'https://atsign.com/privacy-policy/';
+
+  Map<String, String> atMap = {
+    '@caribouillegal96': '@donkeypainful82',
+    '@donkeypainful82': '@caribouillegal96',
+  };
 }

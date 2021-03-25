@@ -21,6 +21,7 @@ dependencies:
       ref: dev_env
 
   auto_route: ^0.6.9
+  device_info: ^1.0.0
   flutter_hooks: ^0.15.0
   flutter_svg: ^0.18.1
   fluttertoast: ^7.1.6

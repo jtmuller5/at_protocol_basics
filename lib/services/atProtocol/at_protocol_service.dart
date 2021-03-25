@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:at_commons/at_commons.dart';
+import 'package:at_protocol_basics/app/app_router.gr.dart';
 import 'package:at_protocol_basics/app/at_constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class AtProtocolService {
     return atClientService.atClient.currentAtSign;
   }
 
+  /// Create keyChainManager and get all previous AtSigns
   Future<void> setup() async {
     await getSigns();
   }
@@ -92,6 +94,8 @@ class AtProtocolService {
     await manager.makeAtSignPrimary(atSign);
   }
 
+  /// Create an AtClient (AtClientImpl) to communicate with the person's
+  /// secondary server
   Future<bool> onboard({String atsign}) async {
     atClientImpl = null;
     atClientService = AtClientService();
@@ -172,16 +176,15 @@ class AtProtocolService {
   }
 
   /// Clear all At Protocol values and return to the initial sign in view
-  void logout(BuildContext context){
-    manager.deleteAtSignFromKeychain(atSignList.first);
+  Future<void> logout(BuildContext context) async {
+    await manager.deleteAtSignFromKeychain(currentAtSign);
 
     atClientService = null;
     atClientImpl = null;
     atClientPreference = null;
 
-    ExtendedNavigator.of(context).pushAndRemoveUntil(Routes.signInView,(route) => false,
-        arguments: SignInViewArguments(
-            stay: true
-        ));
+    await onboard();
+
+    ExtendedNavigator.of(context).pushAndRemoveUntil(Routes.startView,(route) => false);
   }
 }

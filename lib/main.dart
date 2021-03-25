@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
+import 'app/app_router.gr.dart';
 import 'app/themes/light_theme.dart';
 
 Future<void> main() async {
@@ -14,6 +15,7 @@ Future<void> main() async {
   configureDependencies(); // Creates all necessary services for get_it
   await Hive.initFlutter();
   await initializeServices();
+  await atProtocolService.setup();
   await ThemeManager.initialise();
   runApp(App());
 }
@@ -33,10 +35,7 @@ class App extends StatelessWidget {
         theme: regularTheme,
         builder: ExtendedNavigator.builder(
           router: AppRouter(),
-          initialRouteArgs: SignInViewArguments(
-              stay: false
-          ),
-          initialRoute: Routes.signInView,
+          initialRoute: Routes.startView,
           builder: (context, extendedNav) => extendedNav,
         ),
       ),
