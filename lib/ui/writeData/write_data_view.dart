@@ -9,8 +9,8 @@ class WriteDataView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<WriteDataViewModel>.reactive(
       viewModelBuilder: () => WriteDataViewModel(),
-      onModelReady: (model) {
-        // model.initialize();
+      onModelReady: (model) async {
+        await model.initialize();
       },
       builder: (context, model, child) {
         return Scaffold(

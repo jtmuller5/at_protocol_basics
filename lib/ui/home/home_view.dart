@@ -36,7 +36,19 @@ class HomeView extends StatelessWidget {
                   onTap: (){
                     ExtendedNavigator.root.push(Routes.readDataOnceView);
                   },
-                )
+                ),
+                ListTile(
+                  title: Text('Delete Data'),
+                  onTap: (){
+                    ExtendedNavigator.root.push(Routes.deleteDataView);
+                  },
+                ),
+                ListTile(
+                  title: Text('Listen for Updates'),
+                  onTap: (){
+                    ExtendedNavigator.root.push(Routes.listenForUpdatesView);
+                  },
+                ),
               ],
             )
         );

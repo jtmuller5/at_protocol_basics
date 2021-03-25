@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 
 import '../ui/deleteData/delete_data_view.dart';
 import '../ui/home/home_view.dart';
+import '../ui/listenForUpdates/listen_for_updates_view.dart';
 import '../ui/readDataOnce/read_data_once_view.dart';
 import '../ui/start/start_view.dart';
 import '../ui/writeData/write_data_view.dart';
@@ -24,6 +25,7 @@ class Routes {
   static const String writeDataView = '/write-data-view';
   static const String readDataOnceView = '/read-data-once-view';
   static const String deleteDataView = '/delete-data-view';
+  static const String listenForUpdatesView = '/listen-for-updates-view';
   static const all = <String>{
     startView,
     homeView,
@@ -31,6 +33,7 @@ class Routes {
     writeDataView,
     readDataOnceView,
     deleteDataView,
+    listenForUpdatesView,
   };
 }
 
@@ -44,6 +47,7 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.writeDataView, page: WriteDataView),
     RouteDef(Routes.readDataOnceView, page: ReadDataOnceView),
     RouteDef(Routes.deleteDataView, page: DeleteDataView),
+    RouteDef(Routes.listenForUpdatesView, page: ListenForUpdatesView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -87,6 +91,12 @@ class AppRouter extends RouterBase {
     DeleteDataView: (data) {
       return buildAdaptivePageRoute<dynamic>(
         builder: (context) => DeleteDataView(),
+        settings: data,
+      );
+    },
+    ListenForUpdatesView: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => ListenForUpdatesView(),
         settings: data,
       );
     },
