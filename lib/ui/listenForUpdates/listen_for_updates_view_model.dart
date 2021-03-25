@@ -8,27 +8,33 @@ class ListenForUpdatesViewModel extends BaseViewModel {
 
   Future<void> initialize() async {
     String privateKey = await atProtocolService.getPrivateKey(atProtocolService.currentAtSign);
-    atProtocolService.atClientImpl.startMonitor(privateKey, printResult);
+    try {
+      atProtocolService.atClientImpl.startMonitor(privateKey, printResult);
+    } on ConnectionInvalidException catch (e){
+      print('connection error: '+ e.toString());
+    }
   }
 
-  void printResult(String val){
+  Future<void> printResult(String val) async {
     print('Monitor result: ' + val.toString());
+    getNewValue('one');
   }
 
-  Future<void> listenToValue(String key) async {
+  Future<void> getNewValue(String key) async {
     AtKey atKey = AtKey();
     atKey.key = key;
 
     // Get keys shared by the other sign
-
     atKey.sharedBy = AtConstants().atMap[atProtocolService.currentAtSign];
 
-    String serverValue = await atProtocolService.get(atKey);
+    try {
+      String serverValue = await atProtocolService.get(atKey);
 
-    print('Server value: ' + serverValue.toString());
+      print('Server value: ' + serverValue.toString());
 
-    if (key == 'one') {
       one = serverValue ?? '-';
+    } on UnAuthenticatedException catch (e){
+      print('auth error: '+ e.message);
     }
 
     notifyListeners();

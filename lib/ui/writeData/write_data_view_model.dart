@@ -29,7 +29,6 @@ class WriteDataViewModel extends BaseViewModel {
     /// Share with the other sign
     if(shareWith) {
       atKey.sharedWith = AtConstants().atMap[atProtocolService.currentAtSign];
-      //atKey.sharedBy = atProtocolService.currentAtSign;
     }
 
     counter++;
@@ -42,7 +41,6 @@ class WriteDataViewModel extends BaseViewModel {
 
       /// This line enables this @sign to notify another @sign
       try {
-       // atKey.key = 'one${atProtocolService.currentAtSign}';
         await atProtocolService.atClientImpl.notify(atKey, counter.toString(), OperationEnum.update);
       } on AtClientException catch (e) {
         print('notify exception: ' + e.errorMessage);
