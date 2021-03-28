@@ -1,12 +1,8 @@
-import 'dart:typed_data';
-
 import 'package:at_client_mobile/at_client_mobile.dart';
-import 'package:at_commons/at_builders.dart';
 import 'package:at_commons/at_commons.dart';
 import 'package:at_protocol_basics/app/at_constants.dart';
 import 'package:at_protocol_basics/services/services.dart';
 import 'package:stacked/stacked.dart';
-import 'package:base2e15/base2e15.dart';
 
 class WriteDataViewModel extends BaseViewModel {
   String one = '-';

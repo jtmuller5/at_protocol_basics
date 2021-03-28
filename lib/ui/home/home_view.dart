@@ -10,8 +10,8 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
-      onModelReady: (model) {
-        // model.initialize();
+      onModelReady: (model) async {
+        await model.initialize();
       },
       builder: (context, model, child) {
         return Scaffold(
@@ -47,6 +47,24 @@ class HomeView extends StatelessWidget {
                   title: Text('Listen for Updates'),
                   onTap: (){
                     ExtendedNavigator.root.push(Routes.listenForUpdatesView);
+                  },
+                ),
+                ListTile(
+                  title: Text('Send Image'),
+                  onTap: (){
+                    ExtendedNavigator.root.push(Routes.sendImageView);
+                  },
+                ),
+                ListTile(
+                  title: Text('Send Video'),
+                  onTap: (){
+                    ExtendedNavigator.root.push(Routes.sendVideoView);
+                  },
+                ),
+                ListTile(
+                  title: Text('Receive Media'),
+                  onTap: (){
+                    ExtendedNavigator.root.push(Routes.receiveMediaView);
                   },
                 ),
               ],

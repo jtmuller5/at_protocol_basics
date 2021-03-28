@@ -15,6 +15,9 @@ import '../ui/deleteData/delete_data_view.dart';
 import '../ui/home/home_view.dart';
 import '../ui/listenForUpdates/listen_for_updates_view.dart';
 import '../ui/readDataOnce/read_data_once_view.dart';
+import '../ui/receiveMedia/receive_media_view.dart';
+import '../ui/sendImage/send_image_view.dart';
+import '../ui/sendVideo/send_video_view.dart';
 import '../ui/start/start_view.dart';
 import '../ui/writeData/write_data_view.dart';
 
@@ -26,6 +29,9 @@ class Routes {
   static const String readDataOnceView = '/read-data-once-view';
   static const String deleteDataView = '/delete-data-view';
   static const String listenForUpdatesView = '/listen-for-updates-view';
+  static const String sendImageView = '/send-image-view';
+  static const String sendVideoView = '/send-video-view';
+  static const String receiveMediaView = '/receive-media-view';
   static const all = <String>{
     startView,
     homeView,
@@ -34,6 +40,9 @@ class Routes {
     readDataOnceView,
     deleteDataView,
     listenForUpdatesView,
+    sendImageView,
+    sendVideoView,
+    receiveMediaView,
   };
 }
 
@@ -48,6 +57,9 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.readDataOnceView, page: ReadDataOnceView),
     RouteDef(Routes.deleteDataView, page: DeleteDataView),
     RouteDef(Routes.listenForUpdatesView, page: ListenForUpdatesView),
+    RouteDef(Routes.sendImageView, page: SendImageView),
+    RouteDef(Routes.sendVideoView, page: SendVideoView),
+    RouteDef(Routes.receiveMediaView, page: ReceiveMediaView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -97,6 +109,24 @@ class AppRouter extends RouterBase {
     ListenForUpdatesView: (data) {
       return buildAdaptivePageRoute<dynamic>(
         builder: (context) => ListenForUpdatesView(),
+        settings: data,
+      );
+    },
+    SendImageView: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => SendImageView(),
+        settings: data,
+      );
+    },
+    SendVideoView: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => SendVideoView(),
+        settings: data,
+      );
+    },
+    ReceiveMediaView: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => ReceiveMediaView(),
         settings: data,
       );
     },

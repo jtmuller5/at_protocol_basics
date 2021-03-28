@@ -16,14 +16,15 @@ class StartView extends StatelessWidget {
       },
       builder: (context, model, child) {
         return Scaffold(
-            body: Center(
+            body: model.isBusy?Center(
+              child: CircularProgressIndicator(),
+            ):Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              RaisedButton(
+              ElevatedButton(
                 child: Text('I have an @Sign'),
                 onPressed: () async {
-
                   /// Need to reinitialize these if the user recently logged out
                   if (atProtocolService.atClientService == null) {
                     await atProtocolService.getInstance();
@@ -39,7 +40,7 @@ class StartView extends StatelessWidget {
                   );
                 },
               ),
-              RaisedButton(
+              ElevatedButton(
                 child: Text('I need an @Sign'),
                 onPressed: () {
                   systemService.launchURL('https://atsign.com/get-an-sign/');

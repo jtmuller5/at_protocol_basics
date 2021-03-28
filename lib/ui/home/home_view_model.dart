@@ -1,9 +1,11 @@
+import 'package:at_protocol_basics/services/services.dart';
 import 'package:stacked/stacked.dart';
 
-class HomeViewModel extends BaseViewModel{
-
-  void initialize(){
-
+class HomeViewModel extends BaseViewModel {
+  Future<void> initialize() async {
+    if (atProtocolService.atClientImpl == null) {
+      await atProtocolService.onboard(atsign: atProtocolService.currentAtSign);
+    }
   }
 
   @override
@@ -11,5 +13,4 @@ class HomeViewModel extends BaseViewModel{
     // TODO: implement dispose
     super.dispose();
   }
-
 }

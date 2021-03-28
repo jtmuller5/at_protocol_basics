@@ -18,7 +18,7 @@ class AtProtocolService {
   AtClientImpl atClientImpl;
 
   /// The currently logged in @Sign
-  String get atSign{
+  String get atSign {
     return atClientImpl.currentAtSign;
   }
 
@@ -44,8 +44,7 @@ class AtProtocolService {
 
     /// The directory where keys will be stored
     if (Platform.isIOS) {
-      downloadDirectory =
-      await path_provider.getApplicationDocumentsDirectory();
+      downloadDirectory = await path_provider.getApplicationDocumentsDirectory();
     }
 
     /// Download path varies on non-iOS platforms
@@ -53,8 +52,7 @@ class AtProtocolService {
       downloadDirectory = await path_provider.getExternalStorageDirectory();
     }
 
-    final appSupportDirectory =
-    await path_provider.getApplicationSupportDirectory();
+    final appSupportDirectory = await path_provider.getApplicationSupportDirectory();
 
     String path = appSupportDirectory.path;
 
@@ -65,11 +63,11 @@ class AtProtocolService {
       ..rootDomain = AtConstants.ROOT_DOMAIN
       ..hiveStoragePath = path
       ..outboundConnectionTimeout = 600000000
-      ..syncStrategy=SyncStrategy.IMMEDIATE
+      ..syncStrategy = SyncStrategy.IMMEDIATE
       ..downloadPath = downloadDirectory.path;
   }
 
-  void reconnect(){
+  void reconnect() {
     //atClientService.atClient.getLocalSecondary();
     //atClientService.atClient.getRemoteSecondary();
     //onboard(atsign: attachedService.myAtSign.value);
@@ -79,14 +77,14 @@ class AtProtocolService {
     //atClientService.atClient.getLocalSecondary();
     //atClientService.atClient.getRemoteSecondary();
     var stats = await atClientService.getAtsignsWithStatus();
-    print('status: '+stats.toString());
+    print('status: ' + stats.toString());
   }
 
   /// Get all @Signs that this device has used to sign in
   Future<void> getSigns() async {
     manager = KeyChainManager.getInstance();
     atSignList = await manager.getAtSignListFromKeychain();
-    print('Existing at signs: '+ atSignList.toString());
+    print('Existing at signs: ' + atSignList.toString());
   }
 
   /// make the selected atSign the primary one before onboarding again
@@ -103,8 +101,7 @@ class AtProtocolService {
 
     /// The directory where keys will be stored
     if (Platform.isIOS) {
-      downloadDirectory =
-      await path_provider.getApplicationDocumentsDirectory();
+      downloadDirectory = await path_provider.getApplicationDocumentsDirectory();
     }
 
     /// Download path varies on non-iOS platforms
@@ -112,11 +109,9 @@ class AtProtocolService {
       downloadDirectory = await path_provider.getExternalStorageDirectory();
     }
 
-    final appSupportDirectory =
-    await path_provider.getApplicationSupportDirectory();
+    final appSupportDirectory = await path_provider.getApplicationSupportDirectory();
 
     String path = appSupportDirectory.path;
-
 
     /// Setup AtClient preferences (cascade for cleanliness)
     atClientPreference = AtClientPreference()
@@ -127,9 +122,16 @@ class AtProtocolService {
       ..hiveStoragePath = path
       ..downloadPath = downloadDirectory.path;
 
-    var result = await atClientService
-        .onboard(atClientPreference: atClientPreference, atsign: atsign)
-        .catchError((e) => print('Error in Onboarding: $e'));
+    print('onboarding step 1');
+    bool result = await atClientService
+        .onboard(
+      atClientPreference: atClientPreference,
+      atsign: atsign,
+    )
+        .catchError((e) {
+      print('Error in Onboarding: ${e.toString()}');
+      return false;
+    });
 
     print('result: ' + result.toString());
     result ??= false;
@@ -167,8 +169,7 @@ class AtProtocolService {
   }
 
   Future<List<String>> getKeys({String sharedBy}) async {
-    return await atClientImpl
-        .getKeys(regex: 'server_demo', sharedBy: sharedBy);
+    return await atClientImpl.getKeys(regex: 'server_demo', sharedBy: sharedBy);
   }
 
   Future<bool> saveKeys(String publicKey, String privateKey) {
@@ -185,6 +186,6 @@ class AtProtocolService {
 
     await onboard();
 
-    ExtendedNavigator.of(context).pushAndRemoveUntil(Routes.startView,(route) => false);
+    ExtendedNavigator.of(context).pushAndRemoveUntil(Routes.startView, (route) => false);
   }
 }
