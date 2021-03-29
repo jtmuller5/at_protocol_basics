@@ -1,5 +1,5 @@
-import 'package:at_protocol_basics/services/services.dart';
-import 'package:at_protocol_basics/ui/readDataOnce/read_data_once_view_model.dart';
+import 'package:at_platform_files/services/services.dart';
+import 'package:at_platform_files/ui/readDataOnce/read_data_once_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 

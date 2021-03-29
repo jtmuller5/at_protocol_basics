@@ -1,6 +1,6 @@
-import 'package:at_protocol_basics/app/app_router.gr.dart';
-import 'package:at_protocol_basics/services/services.dart';
-import 'package:at_protocol_basics/ui/home/home_view_model.dart';
+import 'package:at_platform_files/app/app_router.gr.dart';
+import 'package:at_platform_files/services/services.dart';
+import 'package:at_platform_files/ui/home/home_view_model.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

@@ -1,4 +1,4 @@
-import 'package:at_protocol_basics/ui/sendVideo/send_video_view_model.dart';
+import 'package:at_platform_files/ui/sendVideo/send_video_view_model.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

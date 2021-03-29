@@ -1,4 +1,4 @@
-package com.example.at_protocol_basics
+package com.example.at_platform_files
 
 import io.flutter.embedding.android.FlutterActivity
 

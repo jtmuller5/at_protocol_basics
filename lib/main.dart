@@ -1,5 +1,5 @@
-import 'package:at_protocol_basics/services/get_it.dart';
-import 'package:at_protocol_basics/services/services.dart';
+import 'package:at_platform_files/services/get_it.dart';
+import 'package:at_platform_files/services/services.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';

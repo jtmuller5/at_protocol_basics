@@ -2,10 +2,9 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:at_commons/at_commons.dart';
-import 'package:at_protocol_basics/app/at_constants.dart';
-import 'package:at_protocol_basics/services/services.dart';
+import 'package:at_platform_files/app/at_constants.dart';
+import 'package:at_platform_files/services/services.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';

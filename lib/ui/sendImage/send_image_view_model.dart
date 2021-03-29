@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:at_commons/at_commons.dart';
-import 'package:at_protocol_basics/app/at_constants.dart';
-import 'package:at_protocol_basics/services/services.dart';
+import 'package:at_platform_files/app/at_constants.dart';
+import 'package:at_platform_files/services/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:base2e15/base2e15.dart';

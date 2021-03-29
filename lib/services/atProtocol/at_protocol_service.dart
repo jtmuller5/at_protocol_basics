@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:at_commons/at_commons.dart';
-import 'package:at_protocol_basics/app/app_router.gr.dart';
-import 'package:at_protocol_basics/app/at_constants.dart';
+import 'package:at_platform_files/app/app_router.gr.dart';
+import 'package:at_platform_files/app/at_constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
